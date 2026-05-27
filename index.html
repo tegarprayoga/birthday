@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔐 Ada Rahasia Untukmu...</title>
+  <link rel="stylesheet" href="css/lock.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="audio/Ed Sheeran - Perfect.mp3" type="audio/mpeg">
+</audio>
+
+<body>
+  <!-- Floating particles background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Floating hearts -->
+  <div class="hearts-bg" id="hearts-bg"></div>
+
+  <div class="lock-wrapper">
+    <div class="lock-card">
+      <!-- Animated lock icon -->
+      <div class="lock-icon-wrap">
+        <div class="lock-icon" id="lockIcon">
+          <div class="lock-body">
+            <div class="lock-keyhole"></div>
+          </div>
+          <div class="lock-shackle" id="shackle"></div>
+        </div>
+        <div class="lock-glow"></div>
+      </div>
+
+      <div class="lock-text">
+        <span class="lock-emoji">💌</span>
+        <h1>Ada Sesuatu Untukmu</h1>
+        <p class="subtitle">Sebuah kejutan kecil yang menunggumu di balik pintu ini...</p>
+        <p class="hint">Masukkan kata kunci rahasia kita 🗝️</p>
+      </div>
+
+      <div class="input-group">
+        <input
+          type="password"
+          id="passwordInput"
+          placeholder="Kata kunci rahasia..."
+          maxlength="20"
+          autocomplete="off"
+        />
+        <button class="unlock-btn" id="unlockBtn" onclick="checkPassword()">
+          <span class="btn-text">Buka 🌸</span>
+          <span class="btn-shine"></span>
+        </button>
+      </div>
+
+      <div class="error-msg" id="errorMsg">
+        <span>❌</span> Hmm, bukan itu sayang... coba lagi?
+      </div>
+
+      <div class="attempts-info" id="attemptsInfo"></div>
+
+      <!-- Hint bubbles -->
+      <div class="hints-row">
+        <div class="hint-bubble">🎂 Tanggal spesial</div>
+        <div class="hint-bubble">📅 Format: DDMMYYYY</div>
+      </div>
+    </div>
+
+    <!-- Decorative elements -->
+    <div class="deco deco-1">✨</div>
+    <div class="deco deco-2">🌸</div>
+    <div class="deco deco-3">💫</div>
+    <div class="deco deco-4">🌺</div>
+    <div class="deco deco-5">⭐</div>
+  </div>
+
+  <!-- Success Overlay -->
+  <div class="success-overlay" id="successOverlay">
+    <div class="success-content">
+      <div class="success-emoji">🎉</div>
+      <h2>Yeay! Kamu berhasil! 🥳</h2>
+      <p>Membuka kejutan untukmu...</p>
+      <div class="loading-hearts">
+        <span>💗</span><span>💕</span><span>💖</span><span>💝</span><span>💘</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/lock.js"></script>
+</body>
+</html>

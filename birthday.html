@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎂 Selamat Ulang Tahun Sayangku 🎂</title>
+  <link rel="stylesheet" href="css/birthday.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Dancing+Script:wght@600;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<audio id="bgMusic" loop autoplay preload="auto">
+  <source src="audio/Ed Sheeran - Perfect.mp3" type="audio/mpeg">
+</audio>
+
+<div id="musicBtn" onclick="toggleMusic()">🎵</div>
+
+<style>
+#musicBtn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: rgba(232,160,191,0.25);
+  border: 1.5px solid rgba(232,160,191,0.5);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(232,160,191,0.3);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(232,160,191,0.5); }
+  50%      { box-shadow: 0 0 0 12px rgba(232,160,191,0); }
+}
+</style>
+
+<script>
+const music = document.getElementById('bgMusic');
+const btn   = document.getElementById('musicBtn');
+let playing = false;
+music.volume = 0.5;
+music.play().then(() => { playing = true; btn.textContent = '🎵'; }).catch(() => { btn.textContent = '🔇'; });
+function toggleMusic() {
+  if (playing) { music.pause(); playing = false; btn.textContent = '🔇'; }
+  else { music.play(); playing = true; btn.textContent = '🎵'; }
+}
+</script>
+
+<body>
+
+  <!-- CONFETTI CANVAS -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- ANIMATED BACKGROUND -->
+  <div class="bg-layer">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="bg-stars" id="bgStars"></div>
+    <div class="bg-petals" id="bgPetals"></div>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="icon-ring" id="iconRing">
+        <span class="icon-float i1">🌸</span>
+        <span class="icon-float i2">💖</span>
+        <span class="icon-float i3">✨</span>
+        <span class="icon-float i4">🦋</span>
+        <span class="icon-float i5">🌺</span>
+        <span class="icon-float i6">💫</span>
+        <span class="icon-float i7">🌙</span>
+        <span class="icon-float i8">⭐</span>
+      </div>
+
+      <div class="hero-badge">
+        <span class="badge-icon">🎂</span>
+        <span>Hari Istimewa</span>
+        <span class="badge-icon">🎂</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="line-1">Selamat</span>
+        <span class="line-2">Ulang Tahun</span>
+        <span class="line-3 name-highlight">Sayangku 💝</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Hari ini langit tersenyum,<br>
+        karena kamu ada di dunia ini 🌸
+      </p>
+
+      <div class="hero-date">
+        <div class="date-deco"></div>
+        <span class="date-text" id="heroDate">🎉 Hari Spesialmu Telah Tiba 🎉</span>
+        <div class="date-deco"></div>
+      </div>
+
+      <button class="cta-btn" onclick="scrollToMessage()">
+        <span>Buka Pesan Cintaku</span>
+        <span class="cta-arrow">💌</span>
+      </button>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-dot"></div>
+      <span>Scroll ke bawah</span>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-header">
+      <div class="section-ornament">✦ ✦ ✦</div>
+      <h2 class="section-title">Kenangan Indah Kita</h2>
+      <p class="section-sub">Setiap foto menyimpan satu cerita cinta 📸</p>
+    </div>
+
+    <!-- LAYOUT 1 : MASONRY GRID -->
+    <!--
+      CARA PAKAI FOTO:
+      Ganti src="images/foto1.jpg" dengan nama file foto kamu.
+      Simpan semua foto di folder images/
+      Ukuran ideal: portrait (3:4) untuk masonry grid
+    -->
+    <div class="gallery-layout-1">
+      <div class="gallery-label">🖼️ Galeri Kenangan</div>
+      <div class="masonry-grid">
+
+        <div class="photo-card tall" data-index="1">
+          <img src="images/foto1.jpg" alt="Foto 1" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="photo-overlay">
+            <span class="photo-heart">💕</span>
+            <p class="photo-caption">Senyummu yang pertama kulihat</p>
+          </div>
+        </div>
+
+        <div class="photo-card tall" data-index="2">
+          <img src="images/foto2.jpg" alt="Foto 2" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="photo-overlay">
+            <span class="photo-heart">🌺</span>
+            <p class="photo-caption">Momen paling bahagia</p>
+          </div>
+        </div>
+
+        <div class="photo-card tall" data-index="3">
+          <img src="images/foto3.jpg" alt="Foto 3" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="photo-overlay">
+            <span class="photo-heart">✨</span>
+            <p class="photo-caption">Cantiknya kamu hari itu</p>
+          </div>
+        </div>
+
+        <div class="photo-card tall" data-index="4">
+          <img src="images/foto4.jpg" alt="Foto 4" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="photo-overlay">
+            <span class="photo-heart">💖</span>
+            <p class="photo-caption">Kenangan yang tak terlupakan</p>
+          </div>
+        </div>
+
+        <div class="photo-card tall" data-index="5">
+          <img src="images/foto5.jpg" alt="Foto 5" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="photo-overlay">
+            <span class="photo-heart">🌙</span>
+            <p class="photo-caption">Malam penuh bintang bersamamu</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- LAYOUT 2 : CINEMATIC SLIDESHOW -->
+    <!--
+      CARA PAKAI FOTO:
+      Ganti src="images/slide1.jpg" dst dengan nama file foto kamu.
+      Ukuran ideal: landscape (16:9)
+    -->
+    <div class="gallery-layout-2">
+      <div class="gallery-label">🎬 Slideshow Sinematik</div>
+      <div class="slideshow-container">
+        <div class="slideshow-track" id="slideshowTrack">
+
+          <div class="slide active">
+            <div class="slide-photo">
+              <img src="images/slide1.jpg" alt="Slide 1" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="slide-caption">
+              <span class="slide-num">01</span>
+              <h3>Awal Segalanya</h3>
+              <p>Hari pertama kita bertemu, dunia terasa berbeda</p>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="slide-photo">
+              <img src="images/slide2.jpg" alt="Slide 2" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="slide-caption">
+              <span class="slide-num">02</span>
+              <h3>Petualangan Bersama</h3>
+              <p>Setiap tempat terasa indah bila bersamamu</p>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="slide-photo">
+              <img src="images/slide3.jpg" alt="Slide 3" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="slide-caption">
+              <span class="slide-num">03</span>
+              <h3>Momen Berharga</h3>
+              <p>Waktu berhenti ketika melihat senyummu</p>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="slide-photo">
+              <img src="images/slide4.jpg" alt="Slide 4" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="slide-caption">
+              <span class="slide-num">04</span>
+              <h3>Selamanya Bersamamu</h3>
+              <p>Semoga perjalanan kita tak pernah berakhir</p>
+            </div>
+          </div>
+
+        </div>
+        <button class="slide-btn prev" onclick="changeSlide(-1)">‹</button>
+        <button class="slide-btn next" onclick="changeSlide(1)">›</button>
+        <div class="slide-dots" id="slideDots"></div>
+      </div>
+    </div>
+
+    <!-- LAYOUT 3 : POLAROID WALL -->
+    <!--
+      CARA PAKAI FOTO:
+      Ganti src="images/polaroid1.jpg" dst dengan nama file foto kamu.
+      Ukuran ideal: kotak (1:1)
+    -->
+    <div class="gallery-layout-3">
+      <div class="gallery-label">📷 Tembok Polaroid</div>
+      <div class="polaroid-wall">
+
+        <div class="polaroid p1">
+          <div class="pol-img">
+            <img src="images/polaroid1.jpg" alt="Polaroid 1" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <p class="pol-caption">Sayang banget 💕</p>
+        </div>
+
+        <div class="polaroid p2">
+          <div class="pol-img">
+            <img src="images/polaroid2.jpg" alt="Polaroid 2" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <p class="pol-caption">Cantik sekali ✨</p>
+        </div>
+
+        <div class="polaroid p3">
+          <div class="pol-img">
+            <img src="images/polaroid3.jpg" alt="Polaroid 3" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <p class="pol-caption">My world 🦋</p>
+        </div>
+
+        <div class="polaroid p4">
+          <div class="pol-img">
+            <img src="images/polaroid4.jpg" alt="Polaroid 4" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <p class="pol-caption">Happy birthday! 🎀</p>
+        </div>
+
+        <div class="polaroid p5">
+          <div class="pol-img">
+            <img src="images/polaroid5.jpg" alt="Polaroid 5" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <p class="pol-caption">Cinta selalu 💖</p>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ========== LOVE MESSAGE ========== -->
+  <section class="message-section" id="message">
+    <div class="message-wrapper">
+
+      <div class="letter-envelope" id="letterEnvelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body">
+          <span class="env-icon">💌</span>
+          <p>Klik untuk membuka surat cintaku</p>
+        </div>
+      </div>
+
+      <div class="letter-content" id="letterContent">
+        <div class="letter-header">
+          <div class="letter-ornament">❦</div>
+          <h2>Untuk Kamu, Cintaku</h2>
+          <div class="letter-ornament">❦</div>
+        </div>
+        <div class="letter-body">
+          <p class="letter-greeting">Sayangku yang tercinta,</p>
+          <p>
+            Di hari yang sangat istimewa ini, aku ingin kamu tahu betapa bersyukurnya aku
+            karena kamu ada dalam hidupku. Setiap hari bersamamu adalah hadiah yang luar biasa
+            yang tidak pernah aku minta, tapi selalu aku syukuri dengan sepenuh hati.
+          </p>
+          <p>
+            Senyummu adalah matahari di pagiku. Tawamu adalah melodi terindah yang pernah
+            kudengar. Dan cintamu adalah rumah tempatku selalu ingin pulang, tidak peduli
+            seberapa jauh aku pergi.
+          </p>
+          <p>
+            Di hari ulang tahunmu ini, aku berharap semua impianmu terwujud satu per satu,
+            semua doamu dikabulkan, dan semua yang kamu cita-citakan menjadi nyata. Kamu
+            layak mendapatkan semua kebahagiaan di dunia ini.
+          </p>
+          <p class="letter-ps">
+            Terima kasih sudah memilih untuk ada di sampingku. Aku mencintaimu lebih dari
+            yang bisa kuungkapkan dengan kata-kata, tapi aku akan terus mencoba setiap harinya.
+          </p>
+          <p class="letter-sign">
+            Dengan seluruh cintaku,<br>
+            <span class="sign-name">Yang selalu menyayangimu 💝</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== CAKE & CANDLES ========== -->
+  <section class="cake-section" id="wishes">
+    <div class="section-header">
+      <div class="section-ornament">✦ ✦ ✦</div>
+      <h2 class="section-title">Tiup Lilinnya!</h2>
+      <p class="section-sub">Klik lilin untuk meniupnya 🌬️</p>
+    </div>
+
+    <div class="cake-wrapper">
+      <div class="cake" id="cake">
+        <div class="candles-row">
+          <div class="candle" data-lit="true" onclick="blowCandle(this)">
+            <div class="flame"><div class="flame-inner"></div></div>
+            <div class="candle-body pink"></div>
+            <div class="wax-drip"></div>
+          </div>
+          <div class="candle" data-lit="true" onclick="blowCandle(this)">
+            <div class="flame"><div class="flame-inner"></div></div>
+            <div class="candle-body gold"></div>
+            <div class="wax-drip"></div>
+          </div>
+          <div class="candle" data-lit="true" onclick="blowCandle(this)">
+            <div class="flame"><div class="flame-inner"></div></div>
+            <div class="candle-body pink"></div>
+            <div class="wax-drip"></div>
+          </div>
+          <div class="candle" data-lit="true" onclick="blowCandle(this)">
+            <div class="flame"><div class="flame-inner"></div></div>
+            <div class="candle-body gold"></div>
+            <div class="wax-drip"></div>
+          </div>
+          <div class="candle" data-lit="true" onclick="blowCandle(this)">
+            <div class="flame"><div class="flame-inner"></div></div>
+            <div class="candle-body pink"></div>
+            <div class="wax-drip"></div>
+          </div>
+        </div>
+        <div class="cake-top">
+          <div class="frosting-drip"></div>
+          <span class="cake-text">Happy Birthday! 🎂</span>
+        </div>
+        <div class="cake-middle"></div>
+        <div class="cake-bottom"></div>
+        <div class="cake-flowers">🌸 💐 🌸</div>
+      </div>
+      <p class="candle-hint" id="candleHint">Klik setiap lilin untuk meniupnya! 💨</p>
+      <div class="wish-reveal" id="wishReveal">
+        <div class="wish-icon">🌟</div>
+        <h3>Semoga Harapanmu Terkabul!</h3>
+        <p>Percaya bahwa semua impianmu akan menjadi nyata ✨</p>
+        <div class="star-burst" id="starBurst"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== REASONS I LOVE YOU ========== -->
+  <section class="reasons-section" id="reasons">
+    <div class="section-header">
+      <div class="section-ornament">✦ ✦ ✦</div>
+      <h2 class="section-title">Alasan Aku Mencintaimu</h2>
+      <p class="section-sub">Karena kamu luar biasa dalam setiap hal 💕</p>
+    </div>
+    <div class="reasons-grid">
+      <div class="reason-card" data-delay="0">
+        <div class="reason-icon">😊</div>
+        <h3>Senyummu</h3>
+        <p>Senyummu bisa membuat hari terburukku menjadi indah seketika</p>
+      </div>
+      <div class="reason-card" data-delay="100">
+        <div class="reason-icon">🧠</div>
+        <h3>Kecerdasanmu</h3>
+        <p>Kamu selalu tahu kata yang tepat di saat yang tepat</p>
+      </div>
+      <div class="reason-card" data-delay="200">
+        <div class="reason-icon">💪</div>
+        <h3>Kekuatanmu</h3>
+        <p>Caramu menghadapi tantangan membuatku selalu kagum</p>
+      </div>
+      <div class="reason-card" data-delay="300">
+        <div class="reason-icon">🎵</div>
+        <h3>Tawamu</h3>
+        <p>Tawamu adalah musik terindah yang pernah kudengar</p>
+      </div>
+      <div class="reason-card" data-delay="400">
+        <div class="reason-icon">🌟</div>
+        <h3>Cahayamu</h3>
+        <p>Kamu menerangi setiap ruangan yang kamu masuki</p>
+      </div>
+      <div class="reason-card" data-delay="500">
+        <div class="reason-icon">💝</div>
+        <h3>Hatimu</h3>
+        <p>Kebaikan hatimu tidak ada tandingannya di dunia ini</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COUNTDOWN ========== -->
+  <section class="countdown-section" id="countdown">
+    <div class="section-header">
+      <div class="section-ornament">✦ ✦ ✦</div>
+      <h2 class="section-title">Hari Spesialmu</h2>
+    </div>
+    <div class="count-grid">
+      <div class="count-box">
+        <div class="count-num" id="cntYears">🎂</div>
+        <div class="count-label">Tahun Bahagia</div>
+      </div>
+      <div class="count-box">
+        <div class="count-num" id="cntMonths">12</div>
+        <div class="count-label">Bulan Bersama</div>
+      </div>
+      <div class="count-box">
+        <div class="count-num" id="cntDays">365</div>
+        <div class="count-label">Hari Penuh Cinta</div>
+      </div>
+      <div class="count-box">
+        <div class="count-num">∞</div>
+        <div class="count-label">Cintaku Untukmu</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL WISH ========== -->
+  <section class="final-section" id="final">
+    <div class="stars-field" id="starsField"></div>
+    <div class="final-content">
+      <div class="final-icon-group">
+        <span class="fi">🌙</span>
+        <span class="fi big">💖</span>
+        <span class="fi">⭐</span>
+      </div>
+      <h2 class="final-title">Selamat Ulang Tahun</h2>
+      <p class="final-name">Sayangku Tercinta 🌸</p>
+      <p class="final-wish">
+        Semoga di usiamu yang baru ini, kamu semakin bersinar, semakin bahagia,
+        dan semua impian terindahmu menjadi kenyataan satu per satu.
+        Aku akan selalu ada di sisimu, mendukungmu dalam setiap langkah.
+      </p>
+      <div class="love-meter">
+        <div class="lm-label">❤️ Cintaku untukmu:</div>
+        <div class="lm-bar">
+          <div class="lm-fill" id="lmFill"></div>
+        </div>
+        <div class="lm-value">100% & selamanya</div>
+      </div>
+      <button class="restart-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        ↑ Kembali ke Atas 🌸
+      </button>
+    </div>
+  </section>
+
+  <script src="js/birthday.js"></script>
+</body>
+</html>
